@@ -5,12 +5,12 @@ import java.util.Date;
 public class Rilevamento {
 	
 	private String localita;
-	private Date data;
+	private int giorno;
 	private int umidita;
 
-	public Rilevamento(String localita, Date data, int umidita) {
+	public Rilevamento(String localita, int giorno, int umidita) {
 		this.localita = localita;
-		this.data = data;
+		this.giorno = giorno;
 		this.umidita = umidita;
 	}
 
@@ -22,12 +22,12 @@ public class Rilevamento {
 		this.localita = localita;
 	}
 
-	public Date getData() {
-		return data;
+	public int getGiorno() {
+		return giorno;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setData(int giorno) {
+		this.giorno = giorno;
 	}
 
 	public int getUmidita() {
@@ -40,14 +40,13 @@ public class Rilevamento {
 
 	// @Override
 	// public String toString() {
-	// return localita + " " + data + " " + umidita;
+	// return localita + " " + giorno + " " + umidita;
 	// }
 
 	@Override
 	public String toString() {
-		return String.valueOf(umidita);
+		return giorno+" "+String.valueOf(umidita);
 	}
-
 	
-
+	
 }

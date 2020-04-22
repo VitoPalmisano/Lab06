@@ -6,11 +6,13 @@ public class TestModel {
 		
 		Model m = new Model();
 		
-		System.out.println(m.getUmiditaMedia(12));
+		System.out.println(m.getUmiditaMedia("12")+m.getCostoMin());
 		
-		System.out.println(m.trovaSequenza(5));
+		System.out.println(m.trovaSequenza("05")+m.getCostoMin());
 		
-
+		System.out.println(m.trovaSequenza("01")+m.getCostoMin());
+		
+		System.out.println(m.trovaSequenza("06")+m.getCostoMin());
 	}
 
 }
