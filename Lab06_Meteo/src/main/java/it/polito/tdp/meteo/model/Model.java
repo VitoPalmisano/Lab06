@@ -75,6 +75,7 @@ public class Model {
 					cittaPresente = false;
 			}
 			if(!giornoAssente && cittaPresente) {
+				System.out.println(parziale);
 				for(int i=0; i<parziale.size(); i++) {
 					costo += parziale.get(i).getRilevamenti().get(i).getUmidita();
 					if(i>0 && !parziale.get(i).equals(parziale.get(i-1)))
@@ -101,8 +102,9 @@ public class Model {
 						}
 						cerca(parziale, costo, contGiorniDiFila, giorno);
 						for(int i=0; i<NUMERO_GIORNI_CITTA_CONSECUTIVI_MIN; i++) {
+							parziale.remove(giorno-2); // ATT!!! Se facessi parziale.remove(c), questo mi genererebbe dei problemi, 
+							// a causa del fatto che c ha piu' corrispondenze all'interno di parziale (guardare metodo equals di Citta')
 							giorno--;
-							parziale.remove(c);
 							c.decreaseCounter();
 							contGiorniDiFila--;
 						}
@@ -111,9 +113,12 @@ public class Model {
 				else {
 					c.increaseCounter();
 					parziale.add(c);
-					cerca(parziale, costo, contGiorniDiFila++, giorno++);
+					contGiorniDiFila++;
+					giorno++;
+					cerca(parziale, costo, contGiorniDiFila, giorno);
+					parziale.remove(giorno-2); // ATT!!! Se facessi parziale.remove(c), questo mi genererebbe dei problemi, 
+					// a causa del fatto che c ha piu' corrispondenze all'interno di parziale (guardare metodo equals di Citta')
 					giorno--;
-					parziale.remove(c);
 					c.decreaseCounter();
 					contGiorniDiFila--;
 				}
